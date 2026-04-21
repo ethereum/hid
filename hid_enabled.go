@@ -31,7 +31,7 @@ specifically for the linux platform, below.
 #cgo windows LDFLAGS: -lsetupapi
 
 #cgo freebsd CFLAGS: -DOS_FREEBSD
-#cgo freebsd LDFLAGS: -lhidapi -lusb
+#cgo freebsd LDFLAGS: -lusb
 
 #cgo openbsd CFLAGS: -DOS_OPENBSD
 
@@ -64,9 +64,8 @@ specifically for the linux platform, below.
 #elif OS_WINDOWS
 	#include "hidapi/windows/hid.c"
 #elif OS_FREEBSD
-	#include <stdlib.h>
-	#include <wchar.h>
-	#include <hidapi/hidapi.h>
+	#include <libusb.h>
+	#include "hidapi/libusb/hid.c"
 #elif DOS_OPENBSD
 	#include "hidapi/libusb/hid.c"
 #endif
